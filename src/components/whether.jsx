@@ -1,5 +1,6 @@
 import { Button, TextField } from "@mui/material";
 import React, { useEffect, useState } from "react";
+import "./weather.css";
 
 function Weather() {
   const [inputloc, setInputLoc] = useState("");
@@ -73,13 +74,13 @@ function Weather() {
       <div style={videoContainerStyle}>
         <video autoPlay loop muted style={videoStyle}>
           <source
-            src="https://player.vimeo.com/external/368748183.sd.mp4?s=dfa0c269d289bc12aa9f7d978efe9e07c0f2431a&profile_id=164&oauth3_token_id=57447761"
+            src="https://player.vimeo.com/external/368748183.sd.mp4?s=dfa0c269d289bc12aa9f7d978efe9e07c0f2431a&profile_id=164&oauth2_token_id=57447761"
             type="video/mp4"
           />
         </video>
       </div>
 
-      <div style={formContainerStyle}>
+      <div className="detail" style={formContainerStyle}>
         <form onSubmit={handleWeather}>
           <TextField
             label="Enter Your City"
@@ -98,17 +99,17 @@ function Weather() {
 
         <div>
           <br />
-          <h3>City: {wData?.name}</h3>
-          <h3>Country: {wData?.sys?.country}</h3>
+          <h2>City: {wData?.name}</h2>
+          <h2>Country: {wData?.sys?.country}</h2>
           {wData?.weather?.map((data, index) => {
             return (
               <div key={index}>
-                <h3>Description: {data.description}</h3>{" "}
+                <h2>Description: {data.description}</h2>{" "}
               </div>
             );
           })}
-          <h3>Temperature: {(wData?.main?.temp - 273.15).toFixed(2)} °C</h3>
-          <h3>Wind Speed: {wData?.wind?.speed} km/hr</h3>
+          <h2>Temperature: {(wData?.main?.temp - 273.15).toFixed(2)} °C</h2>
+          <h2>Wind Speed: {wData?.wind?.speed} km/hr</h2>
         </div>
       </div>
       <div style={footer}>
