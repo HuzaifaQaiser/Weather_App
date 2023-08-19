@@ -37,18 +37,18 @@ function Weather() {
   };
 
   const videoContainerStyle = {
-    position: "absolute",
+    position: "fixed",
     top: 0,
     left: 0,
-    width: "100%",
-    height: "100%",
+    width: "100vw",
+    height: "100vh",
     overflow: "hidden",
     zIndex: -1,
   };
 
   const videoStyle = {
-    minWidth: "100%",
-    minHeight: "100%",
+    width: "100%",
+    height: "100%",
     objectFit: "cover",
   };
 
@@ -57,7 +57,15 @@ function Weather() {
     top: "50%",
     left: "50%",
     transform: "translate(-50%, -50%)",
-    zIndex: 1, // Ensures the form is displayed above the video
+    zIndex: 1,
+  };
+
+  const footer = {
+    position: "fixed",
+    bottom: 0,
+    width: "100%",
+    color: "black",
+    textAlign: "center",
   };
 
   return (
@@ -65,7 +73,7 @@ function Weather() {
       <div style={videoContainerStyle}>
         <video autoPlay loop muted style={videoStyle}>
           <source
-            src="https://player.vimeo.com/external/368748183.sd.mp4?s=dfa0c269d289bc12aa9f7d978efe9e07c0f2431a&profile_id=164&oauth2_token_id=57447761"
+            src="https://player.vimeo.com/external/368748183.sd.mp4?s=dfa0c269d289bc12aa9f7d978efe9e07c0f2431a&profile_id=164&oauth3_token_id=57447761"
             type="video/mp4"
           />
         </video>
@@ -76,9 +84,9 @@ function Weather() {
           <TextField
             label="Enter Your City"
             color="secondary"
-            focused
-            fullWidth // Use fullWidth to occupy full width of the container
-            sx={{ margin: "0 0 10px 0" }} // Adjust margin
+            fullWidth
+            placeholder="City Name"
+            sx={{ margin: "0 0 10px 0" }}
             onChange={(e) => setInputLoc(e.target.value)}
             value={inputloc}
           />
@@ -90,18 +98,24 @@ function Weather() {
 
         <div>
           <br />
-          <h2>City: {wData?.name}</h2>
-          <h2>Country: {wData?.sys?.country}</h2>
+          <h3>City: {wData?.name}</h3>
+          <h3>Country: {wData?.sys?.country}</h3>
           {wData?.weather?.map((data, index) => {
             return (
               <div key={index}>
-                <h2>Description: {data.description}</h2>{" "}
+                <h3>Description: {data.description}</h3>{" "}
               </div>
             );
           })}
-          <h2>Temperature: {wData?.main?.temp} °C</h2>
-          <h2>Wind Speed: {wData?.wind?.speed} km/hr</h2>
+          <h3>Temperature: {(wData?.main?.temp - 273.15).toFixed(2)} °C</h3>
+          <h3>Wind Speed: {wData?.wind?.speed} km/hr</h3>
         </div>
+      </div>
+      <div style={footer}>
+        <p>
+          ALL RIGHTS RESERVED 2023. <br />
+          DESIGNED BY <strong>HUZAIFA QAISER.</strong>
+        </p>
       </div>
     </div>
   );
