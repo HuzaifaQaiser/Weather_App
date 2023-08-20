@@ -73,10 +73,7 @@ function Weather() {
     <div style={myStyle}>
       <div style={videoContainerStyle}>
         <video autoPlay loop muted style={videoStyle}>
-          <source
-            src="https://player.vimeo.com/external/368748183.sd.mp4?s=dfa0c269d289bc12aa9f7d978efe9e07c0f2431a&profile_id=164&oauth2_token_id=57447761"
-            type="video/mp4"
-          />
+          <source src="/bgvideo.mp4" type="video/mp4" />
         </video>
       </div>
 
