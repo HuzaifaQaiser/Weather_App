@@ -18,6 +18,10 @@ function Weather() {
       const data = await response.json();
       setWData(data);
       console.log(data);
+      if (wData.cod === "404") {
+        setWData(data.message);
+        setWData(data);
+      }
     } catch (error) {
       console.error("Error fetching weather data:", error);
     }
@@ -93,6 +97,13 @@ function Weather() {
             Submit
           </Button>
         </form>
+
+        <h3
+          type="capitalize"
+          style={{ color: "red", textTransform: "capitalize" }}
+        >
+          {wData.message}
+        </h3>
 
         <div>
           <br />
